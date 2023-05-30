@@ -10,34 +10,19 @@
 <body>
   <script>
     let input = prompt("数字を入力してください");
-let n = Number(input);
-
-try {
-  if (isNaN(n)) {
-    throw new Error("数字を入力してください");
-  }
-
-  const primeFactors = (num) => {
-    const factors = [];
-    let divisor = 2;
-
-    while (num >= 2) {
+    let n = (input)
+    const primeFactors = (num, divisor = 2, factors = []) => {    //6917の素数にしか対応できず、6947から不可
+      if (num < 2) {
+        return factors;
+      }
       if (num % divisor === 0) {
         factors.push(divisor);
-        num = num / divisor;
-      } else {
-        divisor++;
+        return primeFactors(num / divisor, divisor, factors);
       }
+      return primeFactors(num, divisor + 1, factors);
     }
-
-    return factors;
-  };
-
-  const result = primeFactors(n);
-  alert(`Prime factors of ${n}: ${result}`);
-} catch (error) {
-  alert(error.message);
-}
+    const result = primeFactors(n);
+    alert(` ${n}の素因数は、${result}`);
 
 
   </script>
