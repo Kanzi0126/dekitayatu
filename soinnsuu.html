@@ -10,6 +10,10 @@
 <body>
   <script>
     let input = prompt("数字を入力してください");
+    try {                                             
+      if (isNaN(input)) {                           
+      throw new Error("数字を入力してください");    
+      }
     let n = (input)
     const primeFactors = (num, divisor = 2, factors = []) => {    //6917の素数にしか対応できず、6947から不可
       if (num < 2) {
@@ -23,6 +27,9 @@
     }
     const result = primeFactors(n);
     alert(` ${n}の素因数は、${result}`);
+      } catch (error) {
+    alert(error.message);
+  }
 
 
   </script>
