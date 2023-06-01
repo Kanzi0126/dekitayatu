@@ -9,25 +9,25 @@
 
 <body>
   <script>
-    let n = prompt("数字を入力してください");
+    let n = prompt("数字を入力してください");                        　　　　//6917の素数にしか対応できず、6947から不可。　関数の変更で可能かも
     try {                                             
-      if (isNaN(n)) {                           
-      throw new Error("数字を入力してください");    
+      if (isNaN(n)) {                           　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//数字以外が入力された場合
+      throw new Error("数字を入力してください");                      //エラーメッセージを定義
       }
-    const primeFactors = (num, divisor = 2, factors = []) => {    //6917の素数にしか対応できず、6947から不可
-      if (num < 2) {
-        return factors;
+    const primeFactors = (num, divisor = 2, factors = []) => {    //num=素因数を行う対象　divisor=除数・初期値が２　factors=素因数の格納庫
+      if (num < 2) {　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//割ったときに出るあまりの数字が２以上の場合はループ処理を開始
+        return factors;　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
       }
-      if (num % divisor === 0) {
-        factors.push(divisor);
-        return primeFactors(num / divisor, divisor, factors);
-      }
-      return primeFactors(num, divisor + 1, factors);
+      if (num % divisor === 0) {　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//割り切れた場合、numの約数であると判断
+        factors.push(divisor);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//ここで素因数をキャッチし、　factors=素因数の格納庫に追加する
+        return primeFactors(num / divisor, divisor, factors);　　　　　　　//約数をprimefactors関数の中で割り続ける（ループする）ことで、素因数を求める
+      }　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//２で割るループができなくなった場合
+      return primeFactors(num, divisor + 1, factors);　　　　　　　　　　　　　　　　　　　　　　//初期値であった２から１を足し約数を探していく。見つかった場合、上のループに戻す。
     }
-    const result = primeFactors(n);
-    alert(` ${n}の素因数は、${result}`);
-      } catch (error) {
-    alert(error.message);
+    const result = primeFactors(n);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//primefactors（）に溜まった複数のfactors=素因数の格納庫をresult=nと定義
+    alert(` ${n}の素因数は、${result}`);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 //上で定義した、nを表示
+      } catch (error) {　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//エラーを確認
+    alert(error.message);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//エラーメッセージを表示
   }
 
 
