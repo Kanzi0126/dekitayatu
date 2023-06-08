@@ -25,7 +25,7 @@
       return primeFactors(num, divisor + 1, factors);　　　　　　　　　　　　　　　　　　　　　　//初期値であった２から１を足し約数を探していく。見つかった場合、上のループに戻す。
     }
     const result = primeFactors(n);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//primefactors（）に溜まった複数のfactors=素因数の格納庫をresult=nと定義
-    alert(` ${n}の素因数は、${result}`);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 //上で定義した、nを表示
+    alert(` ${n}の素因数は、1と${result}`です。);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 //上で定義した、nを表示
       } catch (error) {　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//エラーを確認
     alert(error.message);　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//エラーメッセージを表示
   }
